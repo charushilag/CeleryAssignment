@@ -17,7 +17,7 @@ app.conf.update(
 app.conf.beat_schedule = {
     'run-scheduler-daily': {
         'task': 'tasks.schedule_task',
-        'schedule': 60 ,   #crontab(minute=47, hour=23),
+        'schedule': 60 ,   #crontab(minute=0, hour=0),
     }
     #,
     
