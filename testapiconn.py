@@ -68,7 +68,7 @@ def execute_task():
                     #print (tuples)
                     cols = ','.join(list(df.columns)) 
                     print(cols)
-                    query = "INSERT INTO %s(%s) VALUES %%s" % ('test', cols) 
+                    query = "INSERT INTO %s(%s) VALUES %%s" % ('legitimate_sellers', cols) 
                     extras.execute_values(cur, query, tuples) 
                     connection.commit() 
                     count = cur.rowcount
