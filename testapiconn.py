@@ -17,6 +17,7 @@ def execute_task():
 
     cur.execute("SELECT * FROM tasks WHERE status = 'SCHEDULED'")
     tasks = cur.fetchall()
+    print(f'tasks : {tasks}')
 
     for task in tasks:
         print(task)
@@ -68,7 +69,7 @@ def execute_task():
                     #print (tuples)
                     cols = ','.join(list(df.columns)) 
                     print(cols)
-                    query = "INSERT INTO %s(%s) VALUES %%s" % ('legitimate_sellers', cols) 
+                    query = "INSERT INTO %s(%s) VALUES %%s" % ('test', cols) 
                     extras.execute_values(cur, query, tuples) 
                     connection.commit() 
                     count = cur.rowcount
@@ -99,10 +100,12 @@ def execute_task():
                     """, (str(error), datetime.now(), run_id))
                     connection.commit()
                     print("Failed to insert record into db table", error)
-
-                finally:
-                    # closing database connection.
-                    if connection:
-                        cur.close()
-                        connection.close()
-                        print("PostgreSQL connection is closed")   
+                    
+                    # cur.close()
+                    # connection.close()
+                    # print("PostgreSQL connection is closed") 
+                  
+            
+    cur.close()
+    connection.close()
+    print("PostgreSQL connection is closed") 
