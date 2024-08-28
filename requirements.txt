@@ -1,3 +1,4 @@
 celery
 requests
 psycopg2-binary
+fastapi
